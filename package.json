@@ -6,7 +6,7 @@
   "engines": {
     "vscode": "1.91.0"
   },
-  "repository": "a",
+  "repository": "https://github.com/jobsofferings/vscodeQuickMarkdown.git",
   "categories": [
     "Other"
   ],
