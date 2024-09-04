@@ -1,9 +1,11 @@
-# Change Log
+# Quick Markdown
 
-All notable changes to the "quick-markdown" extension will be documented in this file.
+## [0.0.1]
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+1. Quick Access: Easily open the Markdown file with a keyboard shortcut.
+2. Automatic Save: Changes are automatically saved to ensure your ideas are not lost.
+3. Persistent Storage: The file remains available and retains its content between sessions.
 
-## [Unreleased]
+## [0.0.2]
 
-- Initial release
+1. Pressing the ESC key now allows you to close the currently open Note editor.

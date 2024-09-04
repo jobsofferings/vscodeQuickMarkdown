@@ -3,8 +3,10 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 export function activate(context: vscode.ExtensionContext) {
-  const disposable = vscode.commands.registerCommand('extension.openQuickNote', async () => {
-    const previousFilePath = context.globalState.get<string>('quickNoteFilePath');
+
+  const previousFilePath = context.globalState.get<string>('quickNoteFilePath');
+
+  const openQuickNote = vscode.commands.registerCommand('extension.openQuickNote', async () => {
 
     let document: vscode.TextDocument;
 
@@ -30,9 +32,40 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     await vscode.window.showTextDocument(document, vscode.ViewColumn.Beside);
+
+    // 自动保存
+    const autoSaveDisposable = vscode.workspace.onDidChangeTextDocument(async (e) => {
+      if (e.document === document) {
+        await document.save();
+      }
+    });
+
+    context.subscriptions.push(autoSaveDisposable);
   });
 
-  context.subscriptions.push(disposable);
+  const closeQuickNote = vscode.commands.registerCommand('extension.closeQuickNote', async () => {
+    const previousFilePath = context.globalState.get<string>('quickNoteFilePath');
+
+    if (!previousFilePath) {
+      vscode.window.showInformationMessage('No Quick Note file found to close.');
+      return;
+    }
+
+    const editor = vscode.window.visibleTextEditors.find(
+      editor => editor.document.uri.fsPath === previousFilePath
+    );
+
+    if (editor) {
+      await vscode.window.showTextDocument(editor.document);
+      await vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+      vscode.window.showInformationMessage('Quick Markdown Note has been closed.');
+    } else {
+      vscode.window.showInformationMessage('No open editor found for the Quick Note file.');
+    }
+  });
+
+  context.subscriptions.push(openQuickNote);
+  context.subscriptions.push(closeQuickNote);
 }
 
 export function deactivate() {

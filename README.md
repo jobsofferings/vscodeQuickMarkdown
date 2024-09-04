@@ -4,4 +4,5 @@ This VS Code extension is designed to quickly open and capture your creative ide
 
 Key Features:
 1. Quick Access: Easily open the Markdown file with a keyboard shortcut.
-2. Persistent Storage: The file remains available and retains its content between sessions.
+2. Automatic Save: Changes are automatically saved to ensure your ideas are not lost.
+3. Persistent Storage: The file remains available and retains its content between sessions.
