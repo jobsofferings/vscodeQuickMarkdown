@@ -11,6 +11,7 @@
     "Other"
   ],
   "activationEvents": [],
+  "publisher": "c9819758-03e7-6fd2-8340-88d33d01b811",
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
