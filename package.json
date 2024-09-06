@@ -2,7 +2,7 @@
   "name": "quick-markdown",
   "displayName": "Quick Markdown",
   "description": "Quick Markdown",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "1.91.0"
   },
@@ -18,8 +18,20 @@
       {
         "command": "extension.openQuickNote",
         "title": "Open Quick Note"
+      },
+      {
+        "command": "extension.openQuickNoteMenuItem",
+        "title": "Open Quick Note"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.openQuickNoteMenuItem",
+          "group": "navigation"
+        }
+      ]
+    },
     "keybindings": [
       {
         "command": "extension.openQuickNote",

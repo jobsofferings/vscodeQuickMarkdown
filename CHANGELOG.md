@@ -9,3 +9,7 @@
 ## [0.0.2]
 
 1. Pressing the ESC key now allows you to close the currently open Note editor.
+
+## [0.0.3]
+
+1. Now supports opening the Note from the right-click context menu.
