@@ -31,12 +31,17 @@ export const exportNode = async (context: vscode.ExtensionContext) => {
 
   await vscode.window.showTextDocument(document, vscode.ViewColumn.Beside);
 
-  // 自动保存
-  const autoSaveDisposable = vscode.workspace.onDidChangeTextDocument(async (e) => {
-    if (e.document === document) {
-      await document.save();
-    }
-  });
+  const config = vscode.workspace.getConfiguration('quickMarkdown');
+  const autoSave = config.get<boolean>('autoSave', false);
 
-  context.subscriptions.push(autoSaveDisposable);
+  if (autoSave) {
+    // 自动保存
+    const autoSaveDisposable = vscode.workspace.onDidChangeTextDocument(async (e) => {
+      if (e.document === document) {
+        await document.save();
+      }
+    });
+    context.subscriptions.push(autoSaveDisposable);
+  }
+
 }

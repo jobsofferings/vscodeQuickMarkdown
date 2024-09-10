@@ -2,7 +2,7 @@
   "name": "quick-markdown",
   "displayName": "Quick Markdown",
   "description": "Quick Markdown",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "1.91.0"
   },
@@ -48,7 +48,18 @@
         "key": "escape",
         "when": "editorLangId == 'markdown'"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Quick Markdown Settings",
+      "properties": {
+        "quickMarkdown.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically save the Quick Note when changes are made."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
